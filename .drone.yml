@@ -24,10 +24,14 @@ steps:
   - name: socket
     path: /var/run/docker.sock
 
+- name: codecov
+  image: robertstettner/drone-codecov
+  settings:
+    token:
+      from_secret: CODECOV_TOKEN
+    debug: true
+
 volumes:
 - name: socket
   host:
     path: /var/run/docker.sock
-
-depends_on:
-- default-amd64
